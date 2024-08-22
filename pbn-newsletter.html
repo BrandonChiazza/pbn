@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>ElectoAnalytics</title>
+</head>
+<body>
+    <div class="container" style="width: 100%; max-width: 600px; margin: 0 auto; padding: 0 20px 20px;">
+        <div class="header" style="text-align: center; width: 100%;">
+            <!-- Uncomment this section if needed
+            <div class="date" style="font-size: 12px; color: #000; width: 33.30%; display: inline-block; text-align: left;"></div>
+            <div class="logo" style="width: 31.30%; display: inline-block;">
+                <img style="max-width: 112px; display: block;" src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/pb-new-logo-final-resized.jpg" alt="Punchbowl News">
+            </div>
+            <div class="btn" style="width: 33.30%; text-align: right; display: inline-block;">
+                <a href="https://dev.electoanalytics.com/#/" style="font-size: 12px; font-weight: 700; line-height: 12px; text-align: left; text-decoration: unset; display: inline-block; background: transparent;border: 1px solid #CB4697; padding: 12px 8px; color: #CB4697;" class="platform-button">Read in Platform <img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/arrow-img.png" alt="arrow-img"></a>
+            </div>
+            -->
+            <div class="header-btm" style="text-align: center;">
+                <img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/THE PORTAL LOGO - LOCKUP.jpg" alt="Punchbowl News" style="font-size: 36px;font-weight: 700;line-height: 42px;color: #0043CE;text-transform: uppercase;margin-top: 0px;margin-bottom: 5px;width: 70%;">
+                <!-- Uncomment this section if needed
+                <h1 style="font-size: 36px;font-weight: 700;line-height: 42px;color: #0043CE;text-transform: uppercase;margin-top: 0px;margin-bottom: 11px;">THE PLATFORM</h1>
+                -->
+            </div>
+        </div>
+        <div class="content" style="margin-top: 43px;text-align: left;">
+            <h1 style="font-weight: 700; font-size: 22px; line-height: 26px; color: #333333; margin: 0;">{{first_name}}, here are your Portal Alerts</h1>
+            <!-- Uncomment this section if needed
+            <p style="margin: 10px 0; font-size: 13px; font-weight: 400; line-height: 19.11px; text-align: left;">The following includes your tracking notification information that you have subscribed to in The Platform:</p>
+            -->
+            <h2 style="padding: 8px 12px 8px 12px;border: 1px solid #CB4697;display: inline-block; color: #CB4697;text-transform: uppercase;font-size: 12px;font-weight: 600;letter-spacing: 2px;line-height: 12px;">The Portal Alerts</h2>
+            <div class="bill-update" style="border-bottom: 4px solid #EBEBEB; padding-bottom: 40px; margin-bottom: 20px;">
+                <p style="margin: 10px 0; font-size: 13px; font-weight: 400; line-height: 19.11px; text-align: left;"><strong>Bill Title:</strong> {{federal_bill_title}}</p>
+                <p style="margin: 10px 0; font-size: 13px; font-weight: 400; line-height: 19.11px; text-align: left;"><strong>Amendment Bill Id:</strong> {{amendment_bill_id|upper}}</p>
+                {% if federal_bill_summary %}
+                <p style="margin: 10px 0; font-size: 13px; font-weight: 400; line-height: 19.11px; text-align: left;"><strong>Bill Summary:</strong> {{federal_bill_summary}}</p>
+                {% endif %}
+                {% if federal_bill.sponsors.all %}
+                <p style="margin: 10px 0; font-size: 13px; font-weight: 400; line-height: 19.11px; text-align: left;"><strong>Bill Sponsors:</strong> {% for legislator in federal_bill.sponsors.all %}{{legislator.full_name}}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                {% endif %}
+                {% if federal_bill.co_sponsors.all %}
+                <p style="margin: 10px 0; font-size: 13px; font-weight: 400; line-height: 19.11px; text-align: left;"><strong>Bill Co-Sponsors:</strong> {% for legislator in federal_bill.co_sponsors.all %}{{legislator.full_name}}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                {% endif %}
+                <a style="font-size: 13px; font-weight: 400; line-height: 24px; text-align: left; text-decoration: underline; display: inline-block;color: #0043CE;" href="{{bill_url}}" class="button">View Bill Details <span><img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/Vector.jpg" alt=""></span></a><br>
+            </div>
+        </div>
+        <div class="footer" style="text-align: center; margin-top: 30px; padding-top: 20px;">
+            <img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/ftr-logo.png" alt="Punchbowl News" style="max-width: 50px; margin-bottom: 10px;">
+            <div class="social-icons" style="margin-bottom: 10px;">
+                <a href="https://twitter.com/PunchbowlNews"><img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/fb-icon%2Cinstagram-icon.svg%2Clinkdin-icon/twitter-icon.jpg" style="margin: 0 5px;" width="20px" height="20px" alt="Twitter"></a>
+                <a href="https://www.facebook.com/Punchbowl"><img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/fb-icon%2Cinstagram-icon.svg%2Clinkdin-icon/fb-icon.jpg" style="margin: 0 5px;" width="20px" height="20px" alt="Facebook"></a>
+                <a href="https://www.instagram.com/punchbowlnews"><img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/fb-icon%2Cinstagram-icon.svg%2Clinkdin-icon/instagram-icon.svg.jpg" style="margin: 0 5px;" width="20px" height="20px" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/company/punchbowl-news"><img src="https://electo-public.s3.us-east-2.amazonaws.com/Public+Files/Brand+Assets/fb-icon%2Cinstagram-icon.svg%2Clinkdin-icon/linkdin-icon.jpg" style="margin: 0 5px;" width="20px" height="20px" alt="LinkedIn"></a>
+            </div>
+            <!-- Uncomment this section if needed
+            <p>Was this email forwarded to you? <a style="color: #BF398B; text-decoration: none;" href="https://dev.electoanalytics.com/login"><strong>Sign Up!</strong></a></p>
+            -->
+            <div class="box" style="padding: 16px 68px; display: block; background-color: #F3F3F3;margin-bottom:20px;">
+                <p style="font-size: 12px; line-height: 20px; margin: 0 0 10px 0;">You are subscribed to PunchBowl News The Portal email alerts.<br>
+                If you wish to change how frequently you receive these alerts, please check <a href="{{ui_endpoint}}/alert-management" style="color: #BF398B; text-decoration: none;"><strong>your account settings</strong></a>.<br> </p>
+            </div>
+            <!-- Uncomment this section if needed
+            <p class="unsubscribe">Don’t want any more emails? <a href="{{unsubscribe_url}}" style="color: #BF398B; text-decoration: none;">Unsubscribe</a>.</p>
+            <p style="font-size: 12px;  margin: -10 0 40px 0;">Clicking the ‘Unsubscribe’ button above does not cancel your subscription</p>
+            -->
+            <p class="copy" style="margin-top: 10px; font-size: 12px; font-weight: 400;">© 2024 Punchbowl News, All Rights Reserved. Punchbowl News, Capitol Dome, Power People Politics, The Tally, The Canvass, The Daily Punch are trademarks of AJ Press LLC.</p>
+        </div>
+    </div>
+</body>
+</html>
